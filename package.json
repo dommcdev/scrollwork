@@ -1,0 +1,14 @@
+{
+  "name": "scrollwork",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/layout.test.js tests/rules.test.js tests/animation.test.js tests/keybindings.test.js && python tests/settings.py && python tests/launcher.test.py",
+    "test:integration": "python tests/integration.py",
+    "test:strict": "SCROLLWORK_STRICT_CLIENTS=1 python tests/integration.py",
+    "test:interactive": "python scripts/try.py --smoke-test --size 1280x800",
+    "try": "python scripts/try.py",
+    "check": "node --check extension.js && node --check appearance.js && node --check edges.js && node --check animation.js && node --check keybindings.js && node --check layout.js && node --check settings.js && node --check rules.js && glib-compile-schemas --strict --dry-run schemas",
+    "package": "python scripts/package.py"
+  }
+}

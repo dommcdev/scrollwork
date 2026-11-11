@@ -1,0 +1,8 @@
+{
+  "uuid": "scrollwork@local",
+  "name": "Scrollwork",
+  "description": "Scrolling layout, hover focus, centered dialogs and rounded focus borders for GNOME 51. Single-monitor prototype.",
+  "shell-version": ["51"],
+  "settings-schema": "org.gnome.shell.extensions.scrollwork",
+  "version": 5
+}

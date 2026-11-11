@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.scrollwork" path="/org/gnome/shell/extensions/scrollwork/">
+    <key name="focus-left" type="as"><default>['&lt;Super&gt;h']</default><summary>Focus the previous column</summary></key>
+    <key name="scrollwork-launcher" type="as"><default>['&lt;Control&gt;apostrophe']</default><summary>Toggle Vicinae</summary></key>
+    <key name="scrollwork-terminal" type="as"><default>['&lt;Super&gt;Return']</default><summary>New Ghostty window</summary></key>
+    <key name="scrollwork-browser" type="as"><default>['&lt;Super&gt;b']</default><summary>Chrome</summary></key>
+    <key name="scrollwork-browser-private" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;b']</default><summary>Private Chrome</summary></key>
+    <key name="scrollwork-files" type="as"><default>['&lt;Super&gt;f']</default><summary>Files</summary></key>
+    <key name="scrollwork-yazi" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;f']</default><summary>Yazi in Ghostty</summary></key>
+    <key name="scrollwork-notes" type="as"><default>['&lt;Super&gt;n']</default><summary>Obsidian</summary></key>
+    <key name="scrollwork-calculator" type="as"><default>['&lt;Super&gt;t']</default><summary>Floating calculator</summary></key>
+    <key name="scrollwork-audio" type="as"><default>['&lt;Super&gt;r']</default><summary>Floating audio mixer</summary></key>
+    <key name="scrollwork-bluetooth" type="as"><default>['&lt;Super&gt;e']</default><summary>Floating Bluetooth TUI</summary></key>
+    <key name="scrollwork-system-monitor" type="as"><default>['&lt;Super&gt;u']</default><summary>Floating system monitor</summary></key>
+    <key name="scrollwork-wifi" type="as"><default>['&lt;Super&gt;w']</default><summary>Floating WiFi TUI</summary></key>
+    <key name="scrollwork-network-restart" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;w']</default><summary>Restart NetworkManager when explicitly invoked</summary></key>
+    <key name="scrollwork-grandorgue" type="as"><default>['&lt;Alt&gt;g']</default><summary>User GrandOrgue launcher</summary></key>
+    <key name="scrollwork-gemini" type="as"><default>['&lt;Super&gt;i']</default><summary>Gemini web app</summary></key>
+    <key name="scrollwork-chatgpt" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;i']</default><summary>ChatGPT web app</summary></key>
+    <key name="scrollwork-parabolic" type="as"><default>['&lt;Super&gt;y']</default><summary>Parabolic</summary></key>
+    <key name="scrollwork-watch-later" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;y']</default><summary>YouTube Watch Later</summary></key>
+    <key name="scrollwork-settings" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;comma']</default><summary>GNOME settings</summary></key>
+    <key name="scrollwork-dismiss-notification" type="as"><default>['&lt;Super&gt;a']</default><summary>Dismiss the active GNOME notification</summary></key>
+    <key name="scrollwork-color-picker" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;p']</default><summary>Pick a color with GNOME and copy its hex value</summary></key>
+    <key name="focus-right" type="as"><default>['&lt;Super&gt;l']</default><summary>Focus the next column</summary></key>
+    <key name="move-left" type="as"><default>['&lt;Super&gt;&lt;Control&gt;h']</default><summary>Move column left</summary></key>
+    <key name="move-right" type="as"><default>['&lt;Super&gt;&lt;Control&gt;l']</default><summary>Move column right</summary></key>
+    <key name="cycle-width" type="as"><default>['&lt;Super&gt;d']</default><summary>Cycle half/full column width</summary></key>
+    <key name="toggle-floating" type="as"><default>['&lt;Super&gt;g']</default><summary>Toggle floating for the focused window</summary></key>
+    <key name="center-column" type="as"><default>['&lt;Super&gt;c']</default><summary>Center the focused column</summary></key>
+    <key name="close-window" type="as"><default>['&lt;Super&gt;x']</default><summary>Close the focused window</summary></key>
+    <key name="scrollwork-toggle-fullscreen" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;d']</default><summary>Toggle native fullscreen</summary></key>
+    <key name="gap" type="i"><default>8</default><range min="0" max="100"/><summary>Outer gap in logical pixels</summary></key>
+    <key name="inner-gap" type="i"><default>8</default><range min="0" max="100"/><summary>Spacing between columns (Hyprland gaps_in times two)</summary></key>
+    <key name="suppress-maximize" type="b"><default>true</default><summary>Ignore application maximize requests</summary></key>
+    <key name="window-rules" type="s"><default>'[]'</default><summary>Additional JSON window rules; last match wins over the Hyprland profile</summary></key>
+    <key name="hover-focus" type="b"><default>true</default><summary>Focus windows on pointer movement without raising them</summary></key>
+    <key name="edge-hints" type="b"><default>true</default><summary>Reveal clickable offscreen-window hints near the monitor edges</summary></key>
+    <key name="warp-pointer" type="b"><default>true</default><summary>Move the pointer into the window after keyboard focus settles</summary></key>
+    <key name="movement-duration" type="i"><default>150</default><range min="0" max="500"/><summary>Window movement animation in milliseconds; workspaces remain instant</summary></key>
+    <key name="border-fade-duration" type="i"><default>539</default><range min="0" max="1000"/><summary>Focus border-color fade in milliseconds (Hyprland easeOutQuint)</summary></key>
+    <key name="focus-fade-duration" type="i"><default>303</default><range min="0" max="1000"/><summary>Subtle active/inactive opacity fade in milliseconds (Hyprland quick)</summary></key>
+    <key name="style-windows" type="b"><default>true</default><summary>Uniform rounded corners and focus borders</summary></key>
+    <key name="corner-radius" type="i"><default>15</default><range min="0" max="60"/><summary>Corner radius in logical pixels</summary></key>
+    <key name="border-width" type="i"><default>3</default><range min="0" max="10"/><summary>Border drawn inside the window frame</summary></key>
+    <key name="active-border" type="s"><default>'#cba6f7'</default><summary>Focused border color</summary></key>
+    <key name="inactive-border" type="s"><default>'#1e1e2e'</default><summary>Unfocused border color</summary></key>
+    <key name="inactive-opacity" type="d"><default>0.97</default><range min="0.1" max="1.0"/><summary>Unfocused window opacity</summary></key>
+    <key name="workspace-1" type="as"><default>['&lt;Super&gt;1']</default><summary>Workspace 1</summary></key>
+    <key name="workspace-2" type="as"><default>['&lt;Super&gt;2']</default><summary>Workspace 2</summary></key>
+    <key name="workspace-3" type="as"><default>['&lt;Super&gt;3']</default><summary>Workspace 3</summary></key>
+    <key name="workspace-4" type="as"><default>['&lt;Super&gt;4']</default><summary>Workspace 4</summary></key>
+    <key name="workspace-5" type="as"><default>['&lt;Super&gt;5']</default><summary>Workspace 5</summary></key>
+    <key name="workspace-6" type="as"><default>['&lt;Super&gt;6']</default><summary>Workspace 6</summary></key>
+    <key name="workspace-7" type="as"><default>['&lt;Super&gt;7']</default><summary>Workspace 7</summary></key>
+    <key name="workspace-8" type="as"><default>['&lt;Super&gt;8']</default><summary>Workspace 8</summary></key>
+    <key name="workspace-9" type="as"><default>['&lt;Super&gt;9']</default><summary>Workspace 9</summary></key>
+    <key name="workspace-10" type="as"><default>['&lt;Super&gt;0']</default><summary>Workspace 10</summary></key>
+    <key name="scrollwork-move-to-workspace-1" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;1']</default><summary>Move to workspace 1</summary></key>
+    <key name="scrollwork-move-to-workspace-2" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;2']</default><summary>Move to workspace 2</summary></key>
+    <key name="scrollwork-move-to-workspace-3" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;3']</default><summary>Move to workspace 3</summary></key>
+    <key name="scrollwork-move-to-workspace-4" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;4']</default><summary>Move to workspace 4</summary></key>
+    <key name="scrollwork-move-to-workspace-5" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;5']</default><summary>Move to workspace 5</summary></key>
+    <key name="scrollwork-move-to-workspace-6" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;6']</default><summary>Move to workspace 6</summary></key>
+    <key name="scrollwork-move-to-workspace-7" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;7']</default><summary>Move to workspace 7</summary></key>
+    <key name="scrollwork-move-to-workspace-8" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;8']</default><summary>Move to workspace 8</summary></key>
+    <key name="scrollwork-move-to-workspace-9" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;9']</default><summary>Move to workspace 9</summary></key>
+    <key name="scrollwork-move-to-workspace-10" type="as"><default>['&lt;Super&gt;&lt;Shift&gt;0']</default><summary>Move to workspace 10</summary></key>
+  </schema>
+</schemalist>
