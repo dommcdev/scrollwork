@@ -43,11 +43,10 @@ eliminating every such transition might require small Mutter changes later.
 A later offline Electron test with a minimum width 16 pixels larger than its
 half-screen slot reproduced the user's more important failure mode. Stock Mutter
 explicitly discards constrained sizes on ordinary client commits. Tiled-edge hints
-alone did not fix that. The experimental [Mutter patch](patches/README.md) gives
-external layouts authoritative frame rectangles on those commits and clips
-oversized client painting/input to the slot. It does **not** pretend the client
-rendered a narrower UI; cropping is a real tradeoff. It is opt-in, outside the
-extension ZIP, and not ready for system-wide installation.
+alone did not fix that. An experimental Mutter patch (giving external layouts
+authoritative frame rectangles on those commits and clipping oversized clients
+to their slot) passed the regression, but it is not part of this repository.
+If Mutter exposes such an API, `extension.js` detects and uses it.
 
 The independent gap bug is fixed in `layout.js`: a half-width slot is
 `floor((usableWidth - innerGap) / 2)`, not `usableWidth / 2`. The unused odd pixel,
@@ -73,8 +72,6 @@ edits. Recovery uses the same conditional restoration after a shell crash.
 
 Only one logical monitor is supported. A second monitor releases constraints;
 there is no untested output clipping, input clipping or workspace emulation.
-The optional native experiment clips individual tiled slots on this one monitor;
-it is not multi-monitor output ownership support.
 
 ## Floating policy
 

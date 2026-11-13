@@ -63,7 +63,7 @@ export default class Bridge extends Extension {
 def launch():
     results = REPO / "test-results"
     results.mkdir(exist_ok=True)
-    root = Path(tempfile.mkdtemp(prefix="scrollwork-", dir="/tmp/opencode"))
+    root = Path(tempfile.mkdtemp(prefix="scrollwork-"))
     prepare(root)
     env = os.environ.copy()
     for key in [
@@ -94,9 +94,6 @@ def launch():
         }
     )
     print(f"Isolated session: {root}", flush=True)
-    prefix = os.environ.get("SCROLLWORK_MUTTER_PREFIX")
-    if prefix:
-        print(f"Testing staged Mutter: {prefix}", flush=True)
     try:
         result = subprocess.run(
             ["dbus-run-session", "--", sys.executable, __file__, "--inside", str(root)],
@@ -636,7 +633,7 @@ def inside(root):
             )
             if not strict_clients:
                 skipped.append(
-                    "KNOWN LIMITATION: strict oversized Electron geometry still requires the optional patch"
+                    "KNOWN LIMITATION: strict oversized Electron geometry still requires Mutter changes"
                 )
         elif strict_clients:
             raise RuntimeError("Strict minimum-width regression requires electron")
@@ -1415,50 +1412,6 @@ def inside(root):
 
 
 if __name__ == "__main__":
-    prefix = os.environ.get("SCROLLWORK_MUTTER_PREFIX")
-    if prefix and not os.environ.get("SCROLLWORK_MUTTER_OVERLAY"):
-        library_dir = next(
-            (
-                Path(prefix) / name
-                for name in ["lib", "lib64"]
-                if (Path(prefix) / name / "libmutter-51.so.0").exists()
-            ),
-            None,
-        )
-        if library_dir is None:
-            raise RuntimeError(f"No staged Mutter 51 library under {prefix}")
-        system_libdir = Path(
-            subprocess.check_output(
-                ["pkg-config", "--variable=libdir", "libmutter-51"], text=True
-            ).strip()
-        )
-        env = dict(os.environ, SCROLLWORK_MUTTER_OVERLAY="1", RUNNING_UNDER_RR="1")
-        # GI prepends hard-coded library paths: LD_LIBRARY_PATH alone can load
-        # two copies of Cogl and crash. Overlay the matching libraries/typelibs
-        # at those paths in a PRIVATE mount namespace, never in the host /usr.
-        sys.exit(
-            subprocess.run(
-                [
-                    "bwrap",
-                    "--die-with-parent",
-                    "--dev-bind",
-                    "/",
-                    "/",
-                    "--tmpfs",
-                    "/dev/dri",
-                    "--ro-bind",
-                    str(library_dir / "mutter-51"),
-                    str(system_libdir / "mutter-51"),
-                    "--ro-bind",
-                    str((library_dir / "libmutter-51.so.0").resolve()),
-                    str((system_libdir / "libmutter-51.so.0").resolve()),
-                    "--",
-                    sys.executable,
-                    __file__,
-                ],
-                env=env,
-            ).returncode
-        )
     sys.exit(
         inside(Path(sys.argv[2]))
         if len(sys.argv) > 1 and sys.argv[1] == "--inside"
