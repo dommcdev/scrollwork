@@ -13,7 +13,7 @@ import time
 import traceback
 
 REPO = Path(__file__).resolve().parents[1]
-UUID = "scrollwork@local"
+UUID = "scrollwork@dommcdev.github.io"
 
 
 def prepare(root):
@@ -158,7 +158,7 @@ def inside(root):
             "set",
             "org.gnome.shell",
             "enabled-extensions",
-            "['scrollwork-test@local', 'scrollwork@local']",
+            "['scrollwork-test@local', 'scrollwork@dommcdev.github.io']",
         ],
         check=True,
     )
@@ -278,7 +278,7 @@ def inside(root):
             wait("dispatch virtual key event", lambda: True, stable_for=0.06)
 
     ext = (
-        "global.scrollworkTestMain.extensionManager.lookup('scrollwork@local').stateObj"
+        "global.scrollworkTestMain.extensionManager.lookup('scrollwork@dommcdev.github.io').stateObj"
     )
     find = lambda title: (
         f"global.get_window_actors().map(a=>a.meta_window).find(w=>w.title==={json.dumps(title)})"
@@ -301,7 +301,7 @@ def inside(root):
                 visible:b.visible,mapped:b.mapped,x:b.x,y:b.y,width:b.width,height:b.height,
                 line:b.get_child() ? {{x:b.get_child().x,y:b.get_child().y,width:b.get_child().width,
                     height:b.get_child().height,mapped:b.get_child().mapped}} : null}}])) : null,
-            errors:global.scrollworkTestMain.extensionManager.lookup('scrollwork@local').errors,
+            errors:global.scrollworkTestMain.extensionManager.lookup('scrollwork@dommcdev.github.io').errors,
         }}; }})()""")
 
     def settled(title=None):
@@ -368,7 +368,7 @@ def inside(root):
         check(
             "extension enables without errors",
             lambda: evaluate(
-                "global.scrollworkTestMain.extensionManager.lookup('scrollwork@local').state === 1"
+                "global.scrollworkTestMain.extensionManager.lookup('scrollwork@dommcdev.github.io').state === 1"
             ),
         )
         from gi.repository import Gtk
@@ -1120,7 +1120,7 @@ def inside(root):
         check("overview closes without losing geometry", settled)
         # Deliberately disable while an idle layout is queued.
         evaluate(f"""(async () => {{ global.scrollworkTestRecords=[...{ext}.windows.values()]; {ext}._queue();
-            global.scrollworkTestMain.extensionManager.disableExtension('scrollwork@local');
+            global.scrollworkTestMain.extensionManager.disableExtension('scrollwork@dommcdev.github.io');
             return true; }})()""")
         check(
             "disable removes constraints, sources, windows and targets",
@@ -1160,7 +1160,7 @@ def inside(root):
             lambda: evaluate(f"{find('SW-A')}.get_frame_rect().width === 400"),
         )
         evaluate(
-            "global.scrollworkTestMain.extensionManager.enableExtension('scrollwork@local')"
+            "global.scrollworkTestMain.extensionManager.enableExtension('scrollwork@dommcdev.github.io')"
         )
         check(
             "re-enable adopts existing windows without GType conflicts",
@@ -1173,11 +1173,11 @@ def inside(root):
         )
         for index in range(5):
             evaluate(
-                "global.scrollworkTestMain.extensionManager.disableExtension('scrollwork@local')"
+                "global.scrollworkTestMain.extensionManager.disableExtension('scrollwork@dommcdev.github.io')"
             )
             wait(f"disable cycle {index}", lambda: evaluate(f"{ext}.windows.size===0"))
             evaluate(
-                "global.scrollworkTestMain.extensionManager.enableExtension('scrollwork@local')"
+                "global.scrollworkTestMain.extensionManager.enableExtension('scrollwork@dommcdev.github.io')"
             )
             wait(
                 f"enable cycle {index}",

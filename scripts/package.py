@@ -7,11 +7,9 @@ import tempfile
 import zipfile
 
 root = Path(__file__).resolve().parents[1]
-destination = root / "dist/scrollwork@local.shell-extension.zip"
+destination = root / "dist/scrollwork@dommcdev.github.io.shell-extension.zip"
 destination.parent.mkdir(exist_ok=True)
-with tempfile.TemporaryDirectory(
-    prefix="scrollwork-package-", dir="/tmp/opencode"
-) as temporary:
+with tempfile.TemporaryDirectory(prefix="scrollwork-package-") as temporary:
     schemas = Path(temporary) / "schemas"
     schemas.mkdir()
     source = root / "schemas/org.gnome.shell.extensions.scrollwork.gschema.xml"

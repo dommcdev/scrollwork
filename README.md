@@ -146,17 +146,28 @@ Logs, JSON results and a compositor screenshot are copied to `test-results/`.
 Individual sandboxes are retained under `/tmp/opencode/scrollwork-*` for debugging.
 See [TESTING.md](TESTING.md) for actual coverage and limitations.
 
+## Install from a release
+
+```sh
+curl -LO https://github.com/dommcdev/scrollwork/releases/latest/download/scrollwork@dommcdev.github.io.shell-extension.zip
+gnome-extensions install --force scrollwork@dommcdev.github.io.shell-extension.zip
+gnome-extensions enable scrollwork@dommcdev.github.io
+```
+
+Releases are built by GitHub Actions when a `v*` tag is pushed
+(`git tag v5 && git push origin v5`).
+
 ## Build and optionally install
 
 ```sh
 npm run package
 # Only when ready to try this in a GNOME session:
-gnome-extensions install --force dist/scrollwork@local.shell-extension.zip
+gnome-extensions install --force dist/scrollwork@dommcdev.github.io.shell-extension.zip
 # Log out/in if GNOME has not discovered the extension yet.
-gnome-extensions enable scrollwork@local
+gnome-extensions enable scrollwork@dommcdev.github.io
 ```
 
-Disable with `gnome-extensions disable scrollwork@local`. Never install the
+Disable with `gnome-extensions disable scrollwork@dommcdev.github.io`. Never install the
 `scrollwork-test@local` bridge from the test sandbox into a real session. The
 packager explicitly excludes all test tooling.
 

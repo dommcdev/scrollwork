@@ -16,7 +16,7 @@ import tempfile
 import time
 
 REPO = Path(__file__).resolve().parents[1]
-UUID = "scrollwork@local"
+UUID = "scrollwork@dommcdev.github.io"
 EMBEDDED_PREFIX = "/tmp/opencode/mutter-scrollwork-install"
 BASE = Path(pwd.getpwuid(os.getuid()).pw_dir) / ".local/share/scrollwork-test"
 RUNTIME = BASE / "runtime"

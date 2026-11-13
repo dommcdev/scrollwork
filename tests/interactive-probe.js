@@ -10,7 +10,7 @@ export default class Probe extends Extension {
         GLib.mkdir_with_parents(directory, 0o700);
         const file = Gio.File.new_for_path(`${directory}/interactive-probe.json`);
         this.source = GLib.timeout_add(GLib.PRIORITY_DEFAULT, 200, () => {
-            const e = Main.extensionManager.lookup('scrollwork@local')?.stateObj;
+            const e = Main.extensionManager.lookup('scrollwork@dommcdev.github.io')?.stateObj;
             if (!e?.enabled)
                 return GLib.SOURCE_CONTINUE;
             const report = {patched: e.tiledStateSupported, overview: Main.overview.visible,
